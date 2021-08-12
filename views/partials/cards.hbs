@@ -1,0 +1,117 @@
+#{list items:_station, as:'station'}
+<div class="ui segment">
+  <div class="ui five inverted stackable cards">
+    <div class="card">
+      <div class="content">
+        <div class="content right floated">
+          <i class="big purple map pin icon"></i>
+        </div>
+        <div class="header">{{station.name}}</div>
+        <div class="description">
+          Latitude:
+        </div>
+        <div class="description">
+          ${station.latitude}
+        </div>
+        <div class="description">
+          Longitude:
+        </div>
+        <div class="description">
+          ${station.longitude}
+        </div>
+      </div>
+    </div>
+    <div class="inverted card">
+      <div class="content">
+        <div class="content right floated">
+          <i class="big red ${_station.weatherIcon} icon"></i>
+        </div>
+        <div class="header">Weather</div>
+        <div class="description">
+          ${station.latestWeatherCondition}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="content right floated">
+          <i class="big blue temperature ${_station.tempIcon} icon"></i>
+        </div>
+        <div class="content right floated">
+          <i class="big blue ${_station.tempTrend} icon"></i>
+        </div>
+        <div class="header">Temp</div>
+        <div class="description">
+          ${station.latestTempC} C
+        </div>
+        <div class="description">
+          ${station.latestTempF} F
+        </div>
+        <div class="description">
+          Max: ${station.maxTemp} C
+        </div>
+        <div class="description">
+          Min: ${station.minTemp} C
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="content right floated">
+          <i class="big green wind icon"></i>
+        </div>
+        <div class="content right floated">
+          <i class="big green ${_station.windTrend} icon"></i>
+        </div>
+        <div class="header">Wind</div>
+        <div class="description">
+          ${station.beaufort} bft
+        </div>
+        <div class="description">
+          ${station.latestWindDirection}
+        </div>
+        <div class="description">
+          Feels like:
+        </div>
+        <div class="description">
+          ${station.windChill}
+        </div>
+        <div class="description">
+          Max: ${station.maxWindSpeed}
+        </div>
+        <div class="description">
+          Max: ${station.minWindSpeed}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <div class="content right floated">
+          <i class="big orange compress arrows alternate icon"></i>
+        </div>
+        <div class="content right floated">
+          <i class="big orange ${_station.pressureTrend} icon"></i>
+        </div>
+        <div class="header">Pressure</div>
+        <div class="description">
+          ${station.latestPressure} hpa
+        </div>
+        <div class="description">
+          Max:
+        </div>
+        <div class="description">
+          ${station.maxPressure} hpa
+        </div>
+        <div class="description">
+          Min:
+        </div>
+        <div class="description">
+          ${station.minPressure} hpa
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+#{/list}
+
+
