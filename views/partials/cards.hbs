@@ -1,23 +1,24 @@
-#{list items:_station, as:'station'}
+{{#each stations}}
 <div class="ui segment">
+  <h3 class="ui item">{{name}} Station</h3>
   <div class="ui five inverted stackable cards">
     <div class="card">
       <div class="content">
         <div class="content right floated">
           <i class="big purple map pin icon"></i>
         </div>
-        <div class="header">{{station.name}}</div>
+        <div class="header">{{name}}</div>
         <div class="description">
           Latitude:
         </div>
         <div class="description">
-          ${station.latitude}
+          {{lat}}
         </div>
         <div class="description">
           Longitude:
         </div>
         <div class="description">
-          ${station.longitude}
+          {{lng}}
         </div>
       </div>
     </div>
@@ -28,7 +29,7 @@
         </div>
         <div class="header">Weather</div>
         <div class="description">
-          ${station.latestWeatherCondition}
+          {{latestWeatherCondition}}
         </div>
       </div>
     </div>
@@ -43,6 +44,7 @@
         <div class="header">Temp</div>
         <div class="description">
           ${station.latestTempC} C
+          {{temperature}}
         </div>
         <div class="description">
           ${station.latestTempF} F
@@ -112,6 +114,12 @@
     </div>
   </div>
 </div>
-#{/list}
+<a href="/station/{{id}}" class="ui icon button">
+  <i class="icon folder open"></i>
+</a>
+<a href="/dashboard/deleteStation/{{id}}" class="ui icon button">
+  <i class="icon trash"></i>
+</a>
+{{/each}}
 
 

@@ -1,0 +1,30 @@
+<div class="ui five doubling inverted cards">
+
+  #{card title:_station.name,  icon:"marker", colour:"violet",
+                               valueC:"Lat: " + _station.lat, valueD:"Lng: " + _station.lng /}
+
+  #{card title:"Weather",      icon:_station.weatherIcon(), colour:"red",
+                               valueC:_station.weather /}
+
+  #{card title:"Temp",         icon:"temperature low", colour:"blue",
+                               valueA:_station.tempC + " C",    valueB:_station.tempF + " F",
+                               valueC:"Max: " + _station.maxTemp, valueD:"Min: " + _station.minTemp,
+                               trend:_station.tempTrend /}
+
+  #{card title:"Wind",         icon:"wind", colour:"green",
+                               valueA:_station.windBft+" bft", valueB:_station.windCompass,
+                               valueC:"Feels like " + _station.windChill,
+                               valueD:"Max: " + _station.maxWind, valueE:"Min: " + _station.minWind,
+                               trend:_station.windTrend /}
+
+  #{card title:"Pressure",     icon:"centos", colour:"orange",
+                               valueA:_station.pressure + " hpa",
+                               valueC:"Max: " + _station.maxPressure, valueD:"Min: " + _station.minPressure,
+                               trend:_station.pressureTrend /}
+</div>
+
+<td> {{code}}   </td>
+<td> {{temperature}} </td>
+<td> {{reading.windSpeed}} </td>
+<td> {{reading.windDirection}} </td>
+<td> {{reading.pressure}} </td>

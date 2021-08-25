@@ -1,7 +1,9 @@
+{{#each station.readings}}
 <tr>
-  <td> {{reading.code}}   </td>
-  <td> {{reading.temperature}} </td>
-  <td> {{reading.windSpeed}} </td>
-  <td> {{reading.windDirection}} </td>
-  <td> {{reading.pressure}} </td>
+  <td> {{code}}   </td>
+  <td> {{temperature}} </td>
+  <td> {{windSpeed}} </td>
+  <td> {{windDirection}} </td>
+  <td> {{pressure}} </td>
 </tr>
+{{/each}}

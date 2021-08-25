@@ -1,13 +1,15 @@
 {{> menu id="dashboard"}}
-
 <section class="ui raised segment">
+  {{> cards}}
   <header class="ui header">
     Latest Weather
   </header>
-  {{> reading-table}}
+<!--  {{> reading-table}}-->
+  {{> listreadings}}
+  {{> addstation}}
 </section>
 
-<form class="ui stacked segment form" action="/dashboard/addreport" method="POST">
+<form class="ui stacked segment form" action="/dashboard/addReport" method="POST">
   <div class="two fields">
     <div class="field">
       <label>Latitude</label> <input value="52.160858" type="text" name="lat">
@@ -19,7 +21,6 @@
   <button class="ui blue submit button">Add Report</button>
 </form>
 <div class="ui segment" id="chart"></div>
-
 <script>
   const data = {
     labels: [

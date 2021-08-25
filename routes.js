@@ -3,12 +3,32 @@
 const express = require("express");
 const router = express.Router();
 
+const accounts = require("./controllers/accounts.js");
 const dashboard = require("./controllers/dashboard.js");
 const about = require("./controllers/about.js");
+const station = require("./controllers/station.js");
+const reading = require("./controllers/reading.js");
 
-router.get("/", dashboard.index);
+// Accounts
+router.get("/", accounts.index);
+router.get("/login", accounts.login);
+router.get("/signup", accounts.signup);
+router.get("/logout", accounts.logout);
+router.post("/register", accounts.register);
+router.post("/authenticate", accounts.authenticate);
+
+// Home Page
 router.get("/dashboard", dashboard.index);
-router.post("/dashboard/addreport", dashboard.addreport);
 router.get("/about", about.index);
+router.get("/station/:id", station.index);
+router.post("/dashboard/addStation", dashboard.addStation);
+router.get("/dashboard/deleteStation/:id", dashboard.deleteStation);
+router.post("/dashboard/addReport", dashboard.addReport);
+
+router.get("/station/:id/deleteReading/:readingid", station.deleteReading);
+router.post("/station/:id/addReading", station.addReading);
+router.get("/reading/:id/editReading/:readingid", reading.index);
+router.get("/reading/:id/updateReading/:readingid", reading.update);
+router.get("/dashboard/deleteReport/:id", station.deleteReading);
 
 module.exports = router;

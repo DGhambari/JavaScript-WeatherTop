@@ -2,16 +2,30 @@
 
 const logger = require("../utils/logger");
 const axios = require("axios");
+const stationStore = require('../models/station-store');
+const accounts = require("./accounts.js");
+const uuid = require("uuid");
 
 const dashboard = {
   index(request, response) {
     logger.info("dashboard rendering");
+    const loggedInUser = accounts.getCurrentUser(request);
     const viewData = {
-      title: "Template 1 Dashboard"
+      title: "WeatherTop",
+      stations: stationStore.getUserStations(loggedInUser.id),
+      // readings: stationStore.getAllReadings(loggedInUser.id),
+      readingSummary: {
+        temperature: request.body.temperature,
+        windSpeed: request.body.windSpeed,
+        windDirection: request.body.windDirection,
+        pressure: request.body.pressure,
+        latestWeatherCondition: request.body.latestWeatherCondition,
+      }
     };
+    logger.info("about to render", stationStore.getAllStations());
     response.render("dashboard", viewData);
   },
-  async addreport(request, response) {
+  async addReport(request, response) {
     logger.info("rendering new report");
     let report = {};
     const lat = request.body.lat;
@@ -40,7 +54,39 @@ const dashboard = {
       reading: report
     };
     response.render("dashboard", viewData);
-  }
+  },
+
+  // Just need to link this to a button on the dashboard somewhere
+
+  addStation(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
+    let lat;
+    const newStation = {
+      id: uuid.v1(),
+      userid: loggedInUser.id,
+      name: request.body.name,
+      lat: request.body.lat,
+      lng: request.body.lng,
+      readings: []
+    };
+    logger.debug("Creating a new Station", newStation);
+    stationStore.addStation(newStation);
+    response.redirect("/dashboard");
+  },
+
+  deleteStation(request, response) {
+    const stationId = request.params.id;
+    logger.debug(`Deleting Station ${stationId}`);
+    stationStore.removeStation(stationId);
+    response.redirect("/dashboard");
+  },
+
+  deleteReading(request, response) {
+    const reportId = request.params.id;
+    logger.debug(`Deleting Station ${reportId}`);
+    stationStore.removeStation(reportId);
+    response.redirect("/dashboard");
+  },
 };
 
 module.exports = dashboard;
