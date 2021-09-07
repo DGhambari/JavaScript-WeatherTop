@@ -3,24 +3,35 @@
 const logger = require("../utils/logger");
 const stationStore = require("../models/station-store");
 const uuid = require("uuid");
+const analytics = require("../utils/Analytics");
+// const station = require("../controllers/station");
 
 const reading = {
   index(request, response) {
     const stationId = request.params.id;
     const readingId = request.params.readingid;
-    logger.debug(`Editing Reading ${readingId} from Station ${stationId}`);
+    const station = stationStore.getStation(stationId);
+    let windChill = null;
+    let celsiusToFahrenheit = analytics.celsiusToFahrenheit(20);
+    // logger.debug(`Editing Reading ${readingId} from Station ${stationId}`);
+    console.log(celsiusToFahrenheit);
+    if (station.readings.size > 0){
+      // windChill = analytics.windChill(10,15);
+      // latestWeatherCondition = Conversion.weatherCodes(reading.code),
+
+    }
+    // windChill = analytics.windChill(10,15);
     const viewData = {
       title: "Edit Reading",
       station: stationStore.getStation(stationId),
-      reading: stationStore.getReading(stationId, readingId),
+      reading: stationStore.getAllReadings(stationId),
       readingSummary : {
-        // lat: request.body.lat,
-        // lng: request.body.lng,
-        // temperature: request.body.temperature,
-        // windSpeed: request.body.windSpeed,
-        // windDirection: request.body.windDirection,
-        // pressure: request.body.pressure,
-        // latestWeatherCondition: request.body.latestWeatherCondition,
+        lat: request.body.lat,
+        lng: request.body.lng,
+        date: request.body.date,
+        // windChill: windChill,
+        celsiusToFahrenheit: celsiusToFahrenheit,
+
       }
     };
     response.render("reading", viewData);
@@ -42,29 +53,6 @@ const reading = {
     response.redirect("/station/" + stationId);
   },
 
-  // deleteReading(request, response) {
-  //   const stationId = request.params.id;
-  //   const readingId = request.params.readingid;
-  //   logger.debug(`Deleting Reading ${readingId} from Station ${stationId}`);
-  //   stationStore.removeReading(stationId, readingId);
-  //   response.redirect("/station/" + stationId);
-  // },
-
-  // addReading(request, response) {
-  //   const stationId = request.params.id;
-  //   const station = stationStore.getStation(stationId);
-  //   const newReading = {
-  //     id: uuid.v1(),
-  //     code: request.station.code,
-  //     temperature: request.station.temperature,
-  //     windSpeed: request.station.windSpeed,
-  //     windDirection: request.station.windDirection,
-  //     pressure: request.station.pressure,
-  //   };
-  //   logger.debug("New Reading = ", newReading);
-  //   stationStore.addReading(stationId, newReading);
-  //   response.redirect("/station/" + stationId);
-  // }
 };
 
 module.exports = reading;

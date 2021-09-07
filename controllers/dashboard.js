@@ -5,24 +5,40 @@ const axios = require("axios");
 const stationStore = require('../models/station-store');
 const accounts = require("./accounts.js");
 const uuid = require("uuid");
+const conversion = require("../utils/Conversion");
+const analytics = require("../utils/Analytics");
 
 const dashboard = {
   index(request, response) {
+    const stationId = request.params.id;
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
+    const stations = stationStore.getUserStations(loggedInUser.id);
+    // const readings = stationStore.getAllReadings(stationId);
+    // let windChill = analytics.windChill(10,15);
+    // let weatherCodes = analytics.weatherCodes()
+    console.log(conversion.weatherCodes(300));
+    console.log(analytics.windChill(1,3));
     const viewData = {
       title: "WeatherTop",
       stations: stationStore.getUserStations(loggedInUser.id),
-      // readings: stationStore.getAllReadings(loggedInUser.id),
+      readings: stationStore.getAllReadings(stationId),
       readingSummary: {
         temperature: request.body.temperature,
         windSpeed: request.body.windSpeed,
         windDirection: request.body.windDirection,
         pressure: request.body.pressure,
-        latestWeatherCondition: request.body.latestWeatherCondition,
+        // readings: readings,
+        // windChill: analytics.windChill(stationStore.),
+
+        // latestWeatherCondition: conversion.weatherCodes(station.readings.code),
+        // weatherCodeIcon: conversion.weatherCodeIcons(station.readings.code),
+        // test: conversion.weatherCodeIcons(station.readings.code),
+        // beaufort: conversion.beaufort(50),
       }
     };
-    logger.info("about to render", stationStore.getAllStations());
+    // logger.info("about to render", stationStore.getAllStations());
+    // analytics.updateWeather(stations);
     response.render("dashboard", viewData);
   },
   async addReport(request, response) {
@@ -60,7 +76,6 @@ const dashboard = {
 
   addStation(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);
-    let lat;
     const newStation = {
       id: uuid.v1(),
       userid: loggedInUser.id,

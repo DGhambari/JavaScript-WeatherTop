@@ -3,6 +3,9 @@
   #{card title:_station.name,  icon:"marker", colour:"violet",
                                valueC:"Lat: " + _station.lat, valueD:"Lng: " + _station.lng /}
 
+  {title:_station.name,  icon:"marker", colour:"violet",
+  valueC:"Lat: " + _station.lat, valueD:"Lng: " + _station.lng /}
+
   #{card title:"Weather",      icon:_station.weatherIcon(), colour:"red",
                                valueC:_station.weather /}
 
@@ -22,9 +25,3 @@
                                valueC:"Max: " + _station.maxPressure, valueD:"Min: " + _station.minPressure,
                                trend:_station.pressureTrend /}
 </div>
-
-<td> {{code}}   </td>
-<td> {{temperature}} </td>
-<td> {{reading.windSpeed}} </td>
-<td> {{reading.windDirection}} </td>
-<td> {{reading.pressure}} </td>

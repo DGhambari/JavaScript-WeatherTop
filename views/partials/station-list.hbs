@@ -1,0 +1,15 @@
+{{#each stations}}
+<section class="ui stacked segment">
+  {{> station-panel}}
+  <div class="ui divider"></div>
+  <a href="/station/{{id}}" class="ui icon button">
+    <i class="icon folder open"></i>
+  </a>
+  <a href="/dashboard/deleteStation/{{id}}" class="ui icon button">
+    <i class="icon trash"></i>
+  </a>
+</section>
+{{/each}}
+
+
+<hr>

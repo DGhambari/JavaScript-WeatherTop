@@ -1,4 +1,3 @@
-{{#each stations}}
 <div class="ui segment">
   <h3 class="ui item">{{name}} Station</h3>
   <div class="ui five inverted stackable cards">
@@ -12,7 +11,7 @@
           Latitude:
         </div>
         <div class="description">
-          {{lat}}
+          {{station.lat}}
         </div>
         <div class="description">
           Longitude:
@@ -25,11 +24,18 @@
     <div class="inverted card">
       <div class="content">
         <div class="content right floated">
-          <i class="big red ${_station.weatherIcon} icon"></i>
+          <i class="huge red bolt icon"></i>
         </div>
         <div class="header">Weather</div>
         <div class="description">
+          <p>Latest Weather Condition:</p>
+          {{stationSummary.readings.latestWeatherCondition}}
+          {{reading.latestWeatherCondition}}
           {{latestWeatherCondition}}
+          {{test}}
+          {{weather}}
+          {{weatherCodeIcon}}
+          {{beaufort}}
         </div>
       </div>
     </div>
@@ -43,14 +49,14 @@
         </div>
         <div class="header">Temp</div>
         <div class="description">
-          ${station.latestTempC} C
-          {{temperature}}
+          {{lastReading.temperature}} C
         </div>
         <div class="description">
-          ${station.latestTempF} F
+          {{tempF}} F
+          {{temperature}} F
         </div>
         <div class="description">
-          Max: ${station.maxTemp} C
+          Max: {{maxTemp}} C
         </div>
         <div class="description">
           Min: ${station.minTemp} C
@@ -67,7 +73,7 @@
         </div>
         <div class="header">Wind</div>
         <div class="description">
-          ${station.beaufort} bft
+          {{beaufort}} bft
         </div>
         <div class="description">
           ${station.latestWindDirection}
@@ -76,7 +82,8 @@
           Feels like:
         </div>
         <div class="description">
-          ${station.windChill}
+          {{readings.windChill}}
+          {{lastReading.windChill}}
         </div>
         <div class="description">
           Max: ${station.maxWindSpeed}
@@ -113,13 +120,13 @@
       </div>
     </div>
   </div>
+  <hr>
+  <a href="/station/{{id}}" class="ui icon button">
+    <i class="icon folder open"></i>
+  </a>
+  <a href="/dashboard/deleteStation/{{id}}" class="ui icon button">
+    <i class="icon trash"></i>
+  </a>
 </div>
-<a href="/station/{{id}}" class="ui icon button">
-  <i class="icon folder open"></i>
-</a>
-<a href="/dashboard/deleteStation/{{id}}" class="ui icon button">
-  <i class="icon trash"></i>
-</a>
-{{/each}}
 
 

@@ -13,6 +13,7 @@
           "temperature": 0.5,
           "windSpeed": 3.5,
           "pressure": 1002,
+          "date": "2021-04-25 07:20:42.138Z",
           "windDirection": 90
         },
         {
@@ -21,6 +22,7 @@
           "temperature": 6,
           "windSpeed": 2,
           "pressure": 1004,
+          "date": "2021-05-25 07:20:42.138Z",
           "windDirection": 96
         },
         {
@@ -29,6 +31,7 @@
           "temperature": 8,
           "windSpeed": 1,
           "pressure": 1005,
+          "date": "2021-06-25 07:20:42.138Z",
           "windDirection": 101
         }
       ]
@@ -46,6 +49,7 @@
           "temperature": 8,
           "windSpeed": 1,
           "pressure": 999,
+          "date": "2021-02-25 07:20:42.138Z",
           "windDirection": 98
         },
         {
@@ -54,10 +58,10 @@
           "temperature": 0.5,
           "windSpeed": 3.5,
           "pressure": 1000,
+          "date": "2021-03-25 07:20:42.138Z",
           "windDirection": 102
         }
-      ],
-      "duration": null
+      ]
     }
   ]
 }

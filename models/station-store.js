@@ -64,8 +64,13 @@ const stationStore = {
   },
 
   getAllReadings(id) {
-    return this.store.findAll(this.collection);
+    return this.store.findAll(this.collection, { id: id });
   },
+
+  // getStationReadings(id) {
+  //   this.store.findAll(this.collection)
+  //   return this.store.findAll(this.collection, { id: id });
+  // },
 
   updateReading(reading, updatedReading) {
     reading.code = updatedReading.code;
