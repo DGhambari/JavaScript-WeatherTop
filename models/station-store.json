@@ -34,7 +34,27 @@
           "date": "2021-06-25 07:20:42.138Z",
           "windDirection": 101
         }
-      ]
+      ],
+      "duration": null,
+      "code": 700,
+      "temperature": 8,
+      "windSpeed": 1,
+      "windDirection": 101,
+      "pressure": 1005,
+      "windChill": 9.894,
+      "tempF": 46.4,
+      "latestCode": 700,
+      "weatherCodes": "Snow",
+      "weatherCodeIcons": "snowflake",
+      "beaufort": 1,
+      "degreesToCompass": "East South East",
+      "latestpressure": 1005,
+      "maxTemp": 8,
+      "minTemp": 0.5,
+      "maxWind": 3.5,
+      "minWind": 1,
+      "maxPressure": 1005,
+      "minPressure": 1002
     },
     {
       "id": "05",
@@ -61,7 +81,26 @@
           "date": "2021-03-25 07:20:42.138Z",
           "windDirection": 102
         }
-      ]
+      ],
+      "code": 200,
+      "temperature": 0.5,
+      "windSpeed": 3.5,
+      "windDirection": 102,
+      "pressure": 1000,
+      "windChill": -0.22048980101855173,
+      "tempF": 32.9,
+      "latestCode": 200,
+      "weatherCodes": "Partial Clouds",
+      "weatherCodeIcons": "cloud sun",
+      "beaufort": 1,
+      "degreesToCompass": "East South East",
+      "latestpressure": 1000,
+      "maxTemp": 8,
+      "minTemp": 0.5,
+      "maxWind": 3.5,
+      "minWind": 1,
+      "maxPressure": 1000,
+      "minPressure": 999
     }
   ]
 }

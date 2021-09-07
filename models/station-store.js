@@ -2,6 +2,8 @@
 
 const _ = require("lodash");
 const JsonStore = require("./json-store");
+const analytics = require("../utils/Analytics");
+const conversion = require("../utils/Conversion");
 
 const stationStore = {
   store: new JsonStore("./models/station-store.json", {
@@ -67,11 +69,6 @@ const stationStore = {
     return this.store.findAll(this.collection, { id: id });
   },
 
-  // getStationReadings(id) {
-  //   this.store.findAll(this.collection)
-  //   return this.store.findAll(this.collection, { id: id });
-  // },
-
   updateReading(reading, updatedReading) {
     reading.code = updatedReading.code;
     reading.temperature = updatedReading.temperature;
@@ -79,7 +76,8 @@ const stationStore = {
     reading.windDirection = updatedReading.windDirection;
     reading.pressure = updatedReading.pressure;
     this.store.save();
-  }
+  },
+
 };
 
 module.exports = stationStore;

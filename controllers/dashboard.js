@@ -14,27 +14,20 @@ const dashboard = {
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
     const stations = stationStore.getUserStations(loggedInUser.id);
+    // const stationsSummary = stations[viewData];
     // const readings = stationStore.getAllReadings(stationId);
     // let windChill = analytics.windChill(10,15);
     // let weatherCodes = analytics.weatherCodes()
-    console.log(conversion.weatherCodes(300));
-    console.log(analytics.windChill(1,3));
     const viewData = {
       title: "WeatherTop",
       stations: stationStore.getUserStations(loggedInUser.id),
       readings: stationStore.getAllReadings(stationId),
-      readingSummary: {
+      summary: {
         temperature: request.body.temperature,
         windSpeed: request.body.windSpeed,
         windDirection: request.body.windDirection,
         pressure: request.body.pressure,
-        // readings: readings,
-        // windChill: analytics.windChill(stationStore.),
 
-        // latestWeatherCondition: conversion.weatherCodes(station.readings.code),
-        // weatherCodeIcon: conversion.weatherCodeIcons(station.readings.code),
-        // test: conversion.weatherCodeIcons(station.readings.code),
-        // beaufort: conversion.beaufort(50),
       }
     };
     // logger.info("about to render", stationStore.getAllStations());

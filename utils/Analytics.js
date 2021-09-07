@@ -1,36 +1,9 @@
 "use strict";
 
 const conversion = require("../utils/Conversion");
-const station = require("../controllers/station");
 const analytics = require("../utils/Analytics");
 
 const Analytics = {
-  updateWeather(station) {
-    if (station.readings.length > 0) {
-      const lastReading = station.readings[station.reading.length - 1];
-      station.code = lastReading.code;
-      station.weather = conversion.weatherCodes(lastReading.code);
-      station.tempC = lastReading.temperature;
-      station.tempF = analytics.celsiusToFahrenheit(lastReading.temperature);
-      station.maxTemp = Analytics.maxTemp(station.readings);
-      station.minTemp = Analytics.minTemp(station.readings);
-      station.tempTrend = Analytics.tempTrend(station.readings);
-
-      station.windBft = conversion.beaufort(lastReading.windSpeed);
-      station.maxWind = Analytics.maxWind(station.reading);
-      station.minWind = Analytics.minWind(station.readings);
-      // station.windTrend = Analytics.windTrend(station.readings);
-
-      station.windChill = analytics.windChill(lastReading.temperature,lastReading.windSpeed),
-      station.windCompass = conversion.degreesToCompass(lastReading.windDirection);
-
-      station.pressure = lastReading.pressure;
-      station.maxPressure = Analytics.maxPressure(station.readings);
-      station.minPressure = Analytics.minPressure(station.readings);
-      station.pressureTrend = Analytics.pressureTrend(station.readings);
-      console.log(lastReading);
-    }
-  },
 
   windChill(temp, windSpeed) {
     return 13.12 + 0.6215 * temp -  11.37 * (Math.pow(windSpeed, 0.16)) + 0.3965 * temp * (Math.pow(windSpeed, 0.16));
@@ -66,9 +39,65 @@ const Analytics = {
     return today;
   },
 
-  getMaxTemp(readings){
-    let values = [readings.length]
-  }
+  maxTemp(readings){
+    let max = readings[0].temperature;
+    for (let i = 0; i < readings.length; i++ ) {
+      if (readings[i].temperature > max){
+        max = readings[i].temperature;
+      }
+    }
+    return max;
+  },
+
+  minTemp(readings){
+    let min = readings[0].temperature;
+    for (let i = 0; i < readings.length; i++ ) {
+      if (readings[i].temperature < min){
+        min = readings[i].temperature;
+      }
+    }
+    return min;
+  },
+
+  maxWind(readings){
+    let max = readings[0].windSpeed;
+    for (let i = 0; i < readings.length; i++ ) {
+      if (readings[i].windSpeed > max){
+        max = readings[i].windSpeed;
+      }
+    }
+    return max;
+  },
+
+  minWind(readings){
+    let min = readings[0].windSpeed;
+    for (let i = 0; i < readings.length; i++ ) {
+      if (readings[i].windSpeed < min){
+        min = readings[i].windSpeed;
+      }
+    }
+    return min;
+  },
+
+  maxPressure(readings){
+    let max = readings[0].pressure;
+    for (let i = 0; i < readings.length; i++ ) {
+      if (readings[i].pressure > max){
+        max = readings[i].pressure;
+      }
+    }
+    return max;
+  },
+
+  minPressure(readings){
+    let min = readings[0].pressure;
+    for (let i = 0; i < readings.length; i++ ) {
+      if (readings[i].pressure < min){
+        min = readings[i].pressure;
+      }
+    }
+    return min;
+  },
 
 };
 
