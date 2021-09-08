@@ -6,8 +6,9 @@ const analytics = require("../utils/Analytics");
 const Analytics = {
 
   windChill(temp, windSpeed) {
-    return 13.12 + 0.6215 * temp -  11.37 * (Math.pow(windSpeed, 0.16)) + 0.3965 * temp * (Math.pow(windSpeed, 0.16));
-  },
+    let result = (13.12 + 0.6215 * temp -  11.37 * (Math.pow(windSpeed, 0.16)) + 0.3965 * temp * (Math.pow(windSpeed, 0.16)));
+    return Number(result).toFixed(2)
+    },
 
   getMax(values) {
     let max = values[0];
@@ -30,13 +31,19 @@ const Analytics = {
   },
 
   celsiusToFahrenheit(temperature){
-    return ((temperature * (1.8)) + 32);
+    return Number((temperature * (1.8)) + 32).toFixed(2);
   },
 
   setDate(){
-    let today = new Date().toLocaleDateString();
-    console.log(today);
-    return today;
+    const d = new Date();
+    let yyyy = d.getFullYear();
+    let mm = d.getMonth()+1;
+    let dd = d.getDate();
+    let hh = d.getHours();
+    let m = d.getMinutes();
+    let s = d.getSeconds();
+    let ms = d.getMilliseconds();
+    return yyyy+"-"+mm+"-"+dd+" "+hh+":"+m+":"+s+"."+ms;
   },
 
   maxTemp(readings){
@@ -98,6 +105,58 @@ const Analytics = {
     }
     return min;
   },
+
+  tempTrend(readings){
+    let trend = "";
+    let values = [];
+    if (readings.length > 2) {
+      values = [readings[readings.length - 3].temperature, readings[readings.length - 2].temperature, readings[readings.length - 1].temperature];
+    }
+    if ((values[2] > values[1]) && (values[1] > values[0])){
+      trend = "arrow up";
+    } else if ((values[2] < values[1]) && (values[1] < values[0])){
+      trend = "arrow down";
+    }
+    return trend;
+  },
+
+  windTrend(readings){
+    let trend = "";
+    let values = [];
+    if (readings.length > 2) {
+      values = [readings[readings.length - 3].windSpeed, readings[readings.length - 2].windSpeed, readings[readings.length - 1].windSpeed];
+    }
+    if ((values[2] > values[1]) && (values[1] > values[0])){
+      trend = "arrow up";
+    } else if ((values[2] < values[1]) && (values[1] < values[0])){
+      trend = "arrow down";
+    }
+    return trend;
+  },
+
+  pressureTrend(readings){
+    let trend = "";
+    let values = [];
+    if (readings.length > 2) {
+      values = [readings[readings.length - 3].pressure, readings[readings.length - 2].pressure, readings[readings.length - 1].pressure];
+    }
+    if ((values[2] > values[1]) && (values[1] > values[0])){
+      trend = "arrow up";
+    } else if ((values[2] < values[1]) && (values[1] < values[0])){
+      trend = "arrow down";
+    }
+    return trend;
+  },
+
+  tempIcon(temp){
+    let icon = "";
+    if (temp > 15){
+      icon ="high";
+    } else {
+      icon = "low"
+    };
+    return icon;
+  }
 
 };
 

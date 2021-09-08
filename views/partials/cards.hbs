@@ -35,14 +35,14 @@
     <div class="card">
       <div class="content">
         <div class="content right floated">
-          <i class="big blue temperature ${_station.tempIcon} icon"></i>
+          <i class="big blue temperature {{tempIcon}} icon"></i>
         </div>
         <div class="content right floated">
-          <i class="big blue ${_station.tempTrend} icon"></i>
+          <i class="big blue {{tempTrend}} icon"></i>
         </div>
         <div class="header">Temp</div>
         <div class="description">
-          {{lastReading.temperature}} C
+          {{temperature}} C
         </div>
         <div class="description">
           {{tempF}} F
@@ -61,7 +61,7 @@
           <i class="big green wind icon"></i>
         </div>
         <div class="content right floated">
-          <i class="big green ${_station.windTrend} icon"></i>
+          <i class="big green arrow {{windTrend}} icon"></i>
         </div>
         <div class="header">Wind</div>
         <div class="description">
@@ -83,7 +83,7 @@
           Max: {{maxWind}}
         </div>
         <div class="description">
-          Max: {{minWind}}
+          Min: {{minWind}}
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@
           <i class="big orange compress arrows alternate icon"></i>
         </div>
         <div class="content right floated">
-          <i class="big orange ${_station.pressureTrend} icon"></i>
+          <i class="big orange {{pressureTrend}} icon"></i>
         </div>
         <div class="header">Pressure</div>
         <div class="description">
@@ -114,13 +114,6 @@
       </div>
     </div>
   </div>
-  <hr>
-  <a href="/station/{{id}}" class="ui icon button">
-    <i class="icon folder open"></i>
-  </a>
-  <a href="/dashboard/deleteStation/{{id}}" class="ui icon button">
-    <i class="icon trash"></i>
-  </a>
 </div>
 
 

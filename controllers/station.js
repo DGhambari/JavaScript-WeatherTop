@@ -33,29 +33,32 @@ const station = {
       station.minWind = analytics.minWind(station.readings);
       station.maxPressure = analytics.maxPressure(station.readings);
       station.minPressure = analytics.minPressure(station.readings);
+      station.tempTrend = analytics.tempTrend(station.readings);
+      station.windTrend = analytics.windTrend(station.readings);
+      station.pressureTrend = analytics.pressureTrend(station.readings);
+      station.tempIcon = analytics.tempIcon(lastReading.temperature);
     }
-
     const viewData = {
       title: station.name + " Station",
       station: station,
       summary : {
-        // readings: stationStore.getAllReadings(stationId),
-        // lastReading: station.lastReading,
-        // station: station,
-        // windChill: station.windChill,
-        // tempF: analytics.celsiusToFahrenheit(lastReading.temperature),
-        // code: lastReading.code,
-        // weatherCodes: conversion.weatherCodes(lastReading.code),
-        // weatherCodeIcons: conversion.weatherCodeIcons(lastReading.code),
-        // beaufort: conversion.beaufort(lastReading.windSpeed),
-        // degreesToCompass: conversion.degreesToCompass(lastReading.windDirection),
-        // pressure: lastReading.pressure,
-        // maxTemp: analytics.maxTemp(station.readings),
-        // minTemp: analytics.minTemp(station.readings),
-        // maxWind: analytics.maxWind(station.readings),
-        // minWind: analytics.minWind(station.readings),
-        // maxPressure: analytics.maxPressure(station.readings),
-        // minPressure: analytics.minPressure(station.readings),
+        readings: stationStore.getAllReadings(stationId),
+        lastReading: station.lastReading,
+        station: station,
+        windChill: station.windChill,
+        tempF: analytics.celsiusToFahrenheit(lastReading.temperature),
+        code: lastReading.code,
+        weatherCodes: conversion.weatherCodes(lastReading.code),
+        weatherCodeIcons: conversion.weatherCodeIcons(lastReading.code),
+        beaufort: conversion.beaufort(lastReading.windSpeed),
+        degreesToCompass: conversion.degreesToCompass(lastReading.windDirection),
+        pressure: lastReading.pressure,
+        maxTemp: analytics.maxTemp(station.readings),
+        minTemp: analytics.minTemp(station.readings),
+        maxWind: analytics.maxWind(station.readings),
+        minWind: analytics.minWind(station.readings),
+        maxPressure: analytics.maxPressure(station.readings),
+        minPressure: analytics.minPressure(station.readings),
       },
     };
     response.render("station", viewData);
@@ -87,40 +90,6 @@ const station = {
     stationStore.addReading(stationId, newReading);
     response.redirect("/station/" + stationId);
   },
-
-  // update(request, response) {
-  //   const stationId = request.params.id;
-  //   const readingId = request.params.readingid;
-  //   const reading = stationStore.getReading(stationId, readingId)
-  //   const station = stationStore.getStation(stationId);
-  //   const lastReading = station.readings[station.readings.length-1];
-  //   const newStation = {
-  //     code: request.station.code,
-  //     temperature: request.readings.temperature,
-  //     windSpeed: request.body.windSpeed,
-  //     windDirection: request.body.windDirection,
-  //     pressure: request.body.pressure,
-  //     readings: stationStore.getAllReadings(stationId),
-  //     lastReading: lastReading,
-  //     station: station,
-  //     windChill: analytics.windChill(lastReading.temperature,lastReading.windSpeed),
-  //     tempF: analytics.celsiusToFahrenheit(lastReading.temperature),
-  //     latestcode: lastReading.code,
-  //     weatherCodes: conversion.weatherCodes(lastReading.code),
-  //     weatherCodeIcons: conversion.weatherCodeIcons(lastReading.code),
-  //     beaufort: conversion.beaufort(lastReading.windSpeed),
-  //     degreesToCompass: conversion.degreesToCompass(lastReading.windDirection),
-  //     latestpressure: lastReading.pressure,
-  //     maxTemp: analytics.maxTemp(station.readings),
-  //     minTemp: analytics.minTemp(station.readings),
-  //     maxWind: analytics.maxWind(station.readings),
-  //     minWind: analytics.minWind(station.readings),
-  //     maxPressure: analytics.maxPressure(station.readings),
-  //     minPressure: analytics.minPressure(station.readings),
-  //   };
-  //   stationStore.updateStation(station, newStation);
-  //   response.redirect("/station/" + stationId);
-  // },
 };
 
 module.exports = station;

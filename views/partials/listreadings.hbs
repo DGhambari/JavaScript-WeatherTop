@@ -7,6 +7,7 @@
       <th>Wind Speed</th>
       <th>Wind Direction</th>
       <th>Pressure</th>
+      <th>Delete Reading</th>
       <th></th>
     </tr>
   </thead>
@@ -32,9 +33,9 @@
           {{pressure}}
         </td>
         <td>
-          <a href="/reading/{{../station.id}}/editReading/{{id}}" class="ui icon button">
-            <i class="pencil alternate icon"></i>
-          </a>
+<!--          <a href="/reading/{{../station.id}}/editReading/{{id}}" class="ui icon button">-->
+<!--            <i class="pencil alternate icon"></i>-->
+<!--          </a>-->
           <a href="/station/{{../station.id}}/deleteReading/{{id}}" class="ui icon button">
             <i class="icon trash"></i>
           </a>

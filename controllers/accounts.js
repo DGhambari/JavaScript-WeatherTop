@@ -6,8 +6,13 @@ const uuid = require("uuid");
 
 const accounts = {
   index(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
     const viewData = {
-      title: "Login or Signup"
+      title: "Login or Signup",
+      firstName: loggedInUser.firstName,
+      lastName: loggedInUser.lastName,
+      email: loggedInUser.email,
+      password: loggedInUser.password,
     };
     response.render("index", viewData);
   },
@@ -54,7 +59,22 @@ const accounts = {
   getCurrentUser(request) {
     const userEmail = request.cookies.station;
     return userstore.getUserByEmail(userEmail);
-  }
+  },
+
+  settings(request, response){
+    const loggedInUser = userstore.getUserByEmail(request.body.email);
+    response.render("/settings", loggedInUser);
+  },
+
+  // editUser(request, response){
+  //   const loggedInUser = userstore.getUserByEmail(request.body.email);
+  //   const updatedUser = userstore.getUserByEmail(request.body.email);
+  //   loggedInUser.firstName = updatedUser.firstName;
+  //   loggedInUser.lastName = updatedUser.lastName;
+  //   loggedInUser.email = updatedUser.email;
+  //   loggedInUser.password = updatedUser.password;
+  //   response.redirect("/dashboard", updatedUser)
+  // }
 };
 
 module.exports = accounts;
