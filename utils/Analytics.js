@@ -10,25 +10,25 @@ const Analytics = {
     return Number(result).toFixed(2)
     },
 
-  getMax(values) {
-    let max = values[0];
-    for (let i = 0; i < values.length; i++) {
-      if (values[i] > max) {
-        max = value[i];
-      }
-    }
-    return max;
-  },
-
-  getMin(values) {
-    let min = values[0];
-    for (let i = 0; i < values.length; i++) {
-      if (values[i] < min) {
-        min = value[i];
-      }
-    }
-    return min;
-  },
+  // getMax(values) {
+  //   let max = values[0];
+  //   for (let i = 0; i < values.length; i++) {
+  //     if (values[i] > max) {
+  //       max = value[i];
+  //     }
+  //   }
+  //   return max;
+  // },
+  //
+  // getMin(values) {
+  //   let min = values[0];
+  //   for (let i = 0; i < values.length; i++) {
+  //     if (values[i] < min) {
+  //       min = value[i];
+  //     }
+  //   }
+  //   return min;
+  // },
 
   celsiusToFahrenheit(temperature){
     return Number((temperature * (1.8)) + 32).toFixed(2);

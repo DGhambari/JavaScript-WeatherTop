@@ -45,18 +45,10 @@ const dashboard = {
     const viewData = {
       title: "WeatherTop",
       stations: stations,
-      // readings: stationStore.getAllReadings(stationId),
-      // summary: {
-      //   temperature: request.body.temperature,
-      //   windSpeed: request.body.windSpeed,
-      //   windDirection: request.body.windDirection,
-      //   pressure: request.body.pressure,
-      // }
     };
 
     response.render("dashboard", viewData);
   },
-
 
   addStation(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);

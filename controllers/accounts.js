@@ -56,27 +56,17 @@ const accounts = {
     return userstore.getUserByEmail(userEmail);
   },
 
-  settings(request, response){
-    // const loggedInUser = this.getCurrentUser();
-    // const viewData = {
-    //   loggedInUser: loggedInUser,
-    //   firstName: loggedInUser.firstName,
-    //   lastName: loggedInUser.lastName,
-    //   email: loggedInUser.email,
-    //   password: loggedInUser.password,
-    // }
-    response.render("/settings"); // , viewData
-  },
-
-  // editUser(request, response){
-  //   const loggedInUser = userstore.getUserByEmail(request.body.email);
-  //   const updatedUser = userstore.getUserByEmail(request.body.email);
-  //   loggedInUser.firstName = updatedUser.firstName;
-  //   loggedInUser.lastName = updatedUser.lastName;
-  //   loggedInUser.email = updatedUser.email;
-  //   loggedInUser.password = updatedUser.password;
-  //   response.redirect("/dashboard", updatedUser)
-  // }
+  // settings(request, response){
+  //   const loggedInUser = accounts.getCurrentUser(request);
+  //   const updatedUser = {
+  //     firstName: loggedInUser.firstName, //request.body.firstName,
+  //     lastName: loggedInUser.lastName,
+  //     email: loggedInUser.email,
+  //     password: loggedInUser.password,
+  //   }
+  //   userstore.editUser(loggedInUser, updatedUser);
+  //   response.render("/settings"); // , viewData
+  // },
 };
 
 module.exports = accounts;
