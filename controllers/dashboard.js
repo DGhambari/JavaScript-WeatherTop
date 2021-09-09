@@ -7,8 +7,6 @@ const accounts = require("./accounts.js");
 const uuid = require("uuid");
 const analytics = require("../utils/Analytics");
 const conversion = require("../utils/Conversion");
-// const conversion = require("../utils/Conversion");
-// const analytics = require("../utils/Analytics");
 
 const dashboard = {
   index(request, response) {
@@ -16,7 +14,7 @@ const dashboard = {
     logger.info("dashboard rendering");
     const loggedInUser = accounts.getCurrentUser(request);
     const stations = stationStore.getUserStations(loggedInUser.id);
-    for (let i = 1; i < stations.length; i++){
+    for (let i = 0; i < stations.length; i++){
       if (stations[i].readings.length > 0){
         const lastReading = stations[i].readings[stations[i].readings.length-1];
         stations[i].code = lastReading.code;
@@ -55,38 +53,10 @@ const dashboard = {
       //   pressure: request.body.pressure,
       // }
     };
+
     response.render("dashboard", viewData);
   },
-  async addReport(request, response) {
-    logger.info("rendering new report");
-    let report = {};
-    const lat = request.body.lat;
-    const lng = request.body.lng;
-    const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=23ebcf57b5cb28f316d20cd159a44860`
-    const result = await axios.get(requestUrl);
-    if (result.status == 200) {
-      const reading = result.data.current;
-      report.code = reading.weather[0].id;
-      report.temperature = reading.temp;
-      report.windSpeed = reading.wind_speed;
-      report.pressure = reading.pressure;
-      report.windDirection = reading.wind_deg;
-      report.tempTrend = [];
-      report.trendLabels = [];
-      const trends = result.data.daily;
-      for (let i=0; i<trends.length; i++) {
-        report.tempTrend.push(trends[i].temp.day);
-        const date = new Date(trends[i].dt * 1000);
-        console.log(date);
-        report.trendLabels.push(`${date.getDate()}/${date.getMonth()}/${date.getFullYear()}` );
-      }
-    }
-    const viewData = {
-      title: "Weather Report",
-      reading: report
-    };
-    response.render("dashboard", viewData);
-  },
+
 
   addStation(request, response) {
     const loggedInUser = accounts.getCurrentUser(request);

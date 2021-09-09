@@ -6,13 +6,8 @@ const uuid = require("uuid");
 
 const accounts = {
   index(request, response) {
-    const loggedInUser = accounts.getCurrentUser(request);
     const viewData = {
       title: "Login or Signup",
-      firstName: loggedInUser.firstName,
-      lastName: loggedInUser.lastName,
-      email: loggedInUser.email,
-      password: loggedInUser.password,
     };
     response.render("index", viewData);
   },
@@ -62,8 +57,15 @@ const accounts = {
   },
 
   settings(request, response){
-    const loggedInUser = userstore.getUserByEmail(request.body.email);
-    response.render("/settings", loggedInUser);
+    // const loggedInUser = this.getCurrentUser();
+    // const viewData = {
+    //   loggedInUser: loggedInUser,
+    //   firstName: loggedInUser.firstName,
+    //   lastName: loggedInUser.lastName,
+    //   email: loggedInUser.email,
+    //   password: loggedInUser.password,
+    // }
+    response.render("/settings"); // , viewData
   },
 
   // editUser(request, response){

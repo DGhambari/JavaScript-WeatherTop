@@ -53,19 +53,19 @@
       "minWind": 1,
       "maxPressure": 1005,
       "minPressure": 1002,
-      "weatherCodes": "Snow",
-      "weatherCodeIcons": "snowflake",
       "tempTrend": "arrow up",
       "windTrend": "arrow down",
       "pressureTrend": "arrow up",
-      "tempIcon": "low"
+      "tempIcon": "low",
+      "weatherCodes": "Snow",
+      "weatherCodeIcons": "snowflake"
     },
     {
       "id": "05",
       "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "name": "Dunmore",
       "lat": "52.1528",
-      "lng": "6.9948",
+      "lng": "-6.9948",
       "readings": [
         {
           "id": "06",
@@ -86,28 +86,28 @@
           "windDirection": 102
         }
       ],
-      "code": "400",
-      "temperature": "10",
-      "windSpeed": "45",
-      "windDirection": "200",
-      "pressure": "1020",
-      "windChill": "5.72",
-      "tempF": "50.00",
-      "latestCode": "400",
-      "beaufort": 6,
-      "degreesToCompass": "South South West",
-      "latestpressure": "1020",
-      "maxTemp": "10",
+      "code": "100",
+      "temperature": "200",
+      "windSpeed": "300",
+      "windDirection": "500",
+      "pressure": "500",
+      "windChill": "306.62",
+      "tempF": "392.00",
+      "latestCode": "100",
+      "beaufort": 12,
+      "degreesToCompass": "North",
+      "latestpressure": "500",
+      "maxTemp": "200",
       "minTemp": 0.5,
-      "maxWind": "45",
+      "maxWind": "300",
       "minWind": 1,
-      "maxPressure": "1020",
-      "minPressure": 999,
+      "maxPressure": 1000,
+      "minPressure": "500",
       "duration": null,
       "tempTrend": "",
       "windTrend": "arrow up",
-      "pressureTrend": "arrow up",
-      "tempIcon": "low"
+      "pressureTrend": "",
+      "tempIcon": "high"
     }
   ]
 }

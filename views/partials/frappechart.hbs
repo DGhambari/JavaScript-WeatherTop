@@ -1,0 +1,50 @@
+
+<div class="ui segment" id="chart"></div>
+<script>
+  const data = {
+    labels: [
+      {{#each reading.trendLabels}}
+        "{{this}}",
+      {{/each}}
+    ],
+    datasets: [
+      {
+        name: "Temperature", type: "line",
+        values: [
+          {{#each reading.tempTrend}}
+            {{this}},
+          {{/each}}
+        ]
+      },
+      {
+        name: "Wind Speed", type: "line",
+        values: [
+          {{#each reading.windTrend}}
+            {{this}},
+          {{/each}}
+        ]
+      },
+      // Removed the pressure readings as it does not display well with the
+      // wind speed and temperature. The difference in values is too large
+      // so they just look like straight lines.
+
+      <!--{-->
+      <!--  name: "Pressure", type: "line",-->
+      <!--  values: [-->
+      <!--    {{#each reading.pressureTrend}}-->
+        <!--      {{this}},-->
+        <!--    {{/each}}-->
+      <!--  ]-->
+      <!--}-->
+    ]
+  }
+
+  const chart = new frappe.Chart("#chart", {
+    title: "Temperature & Wind Speed Trend",
+    data: data,
+    type: 'line',
+    lineOptions: {
+      regionFill: 1 // default: 0
+    },
+    height: 250,
+  })

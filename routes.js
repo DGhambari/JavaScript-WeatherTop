@@ -24,7 +24,7 @@ router.get("/about", about.index);
 router.get("/station/:id", station.index);
 router.post("/dashboard/addStation", dashboard.addStation);
 router.get("/dashboard/deleteStation/:id", dashboard.deleteStation);
-router.post("/dashboard/addReport", dashboard.addReport);
+router.post("/station/addReport", station.addReport);
 
 router.get("/station/:id/deleteReading/:readingid", station.deleteReading);
 router.post("/station/:id/addReading", station.addReading);
