@@ -28,6 +28,8 @@ const userStore = {
     return this.store.findOneBy(this.collection, { password: password });
   },
 
+  // Removed as could not get it working
+
   // editUser(loggedInUser, updatedUser){
   //   loggedInUser.firstName = updatedUser.firstName;
   //   loggedInUser.lastName = updatedUser.lastName;
