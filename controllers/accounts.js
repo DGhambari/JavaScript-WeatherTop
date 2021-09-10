@@ -58,15 +58,20 @@ const accounts = {
 
   // settings(request, response){
   //   const loggedInUser = accounts.getCurrentUser(request);
-  //   const updatedUser = {
-  //     firstName: loggedInUser.firstName, //request.body.firstName,
-  //     lastName: loggedInUser.lastName,
-  //     email: loggedInUser.email,
-  //     password: loggedInUser.password,
-  //   }
-  //   userstore.editUser(loggedInUser, updatedUser);
-  //   response.render("/settings"); // , viewData
+  //   response.render("/edit", loggedInUser);
   // },
+  //
+  // update(request, response){
+  //   let loggedInUser = accounts.getCurrentUser(request);
+  //   const updatedUser = {
+  //     firstName: request.body.firstName,
+  //     lastName: request.body.lastName,
+  //     email: request.body.email,
+  //     password: request.body.password
+  //   };
+  //   userstore.editUser(loggedInUser, updatedUser);
+  //   response.redirect("login");
+  // }
 };
 
 module.exports = accounts;
